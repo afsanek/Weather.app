@@ -10,13 +10,13 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Weather App</title>
   </head>
   <body>
     <div class="container">
-      <div class="weather-app">
+      <div class="weather-app border rounded">
         <form class="search-form">
           <div class="row">
             <div class="col-6">
@@ -48,7 +48,7 @@
             </div>
           </div>
         </form>
-        <h1 id="city-name"></h1>
+        <h1 id="city-name">New York</h1>
         <ul>
           <li id="date-time"></li>
           <li id="description"></li>
@@ -79,7 +79,15 @@
           </div>
         </div>
       </div>
+      <small>
+        <a
+          href="https://github.com/afsanek/Weather.app"
+          target="_blank"
+          id="github"
+          >Made by Afsaneh Karimi</a
+        >
+      </small>
     </div>
-    <script src="src/index.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
