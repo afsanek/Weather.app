@@ -31,6 +31,7 @@ let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&uni
 
 function updateInfo(response) {
   let temp = Math.round(response.data.main.temp);
+  console.log(response);
   degree.innerHTML = temp;
   cityName.innerHTML = searchedCity;
   description.innerHTML = response.data.weather[0].description;
