@@ -35,8 +35,8 @@ function updateInfo(response) {
   degree.innerHTML = temp;
   cityName.innerHTML = searchedCity;
   description.innerHTML = response.data.weather[0].description;
-  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
-  wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+  humidity.innerHTML = `Humidity: <span class="red">${response.data.main.humidity}%</span>`;
+  wind.innerHTML = `Wind: <span class="red">${response.data.wind.speed} km/h</span>`;
   icon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
