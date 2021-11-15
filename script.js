@@ -23,6 +23,7 @@ let description = document.querySelector("#description");
 let humidity = document.querySelector("#humidity");
 let wind = document.querySelector("#wind");
 let currentLocation = document.querySelector("#current-location");
+let icon = document.querySelector("#icon");
 
 //api
 let apiKey = "20d87b3c54629cecfb5e61654cd02764";
@@ -35,6 +36,11 @@ function updateInfo(response) {
   description.innerHTML = response.data.weather[0].description;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 axios.get(url).then(updateInfo);
 
