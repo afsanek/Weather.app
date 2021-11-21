@@ -16,65 +16,74 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-app border rounded bg-color">
-        <form class="search-form">
-          <div class="row">
-            <div class="col-6">
-              <input
-                type="search"
-                placeholder="Type a city.."
-                autofocus="on"
-                autocomplete="off"
-                class="form-control shadow-sm"
-                id="search-val"
-              />
-            </div>
-            <div class="col-3">
-              <input
-                type="submit"
-                value="Search🔎"
-                class="form-control btn btn-primary shadow-sm"
-              />
-            </div>
-            <div class="col-3">
-              <button
-                type="submit"
-                value="📌Current"
-                class="btn btn-success w-100"
-                id="current-location"
-              >
-                Current
-              </button>
-            </div>
-          </div>
-        </form>
-        <h1 id="city-name">New York</h1>
-        <ul>
-          <li id="date-time"></li>
-          <li id="description"></li>
-        </ul>
-        <div class="row">
-          <div class="col-6">
-            <div class="clearfix">
-              <img src="" alt="..." class="weather-icon float-left" id="icon" />
-              <div class="float-left">
-                <span class="temperature" id="current-temp">19</span
-                ><span class="units"
-                  ><a href="#" id="cel">°C</a> |
-                  <a href="#" id="farh">°F</a></span
-                >
+      <div class="weather-app bg-color">
+        <div class="row zero-margin">
+          <div class="col-8 inner-padding">
+            <form class="search-form">
+              <div class="row">
+                <div class="col-8">
+                  <input
+                    type="search"
+                    placeholder="Type a city.."
+                    autofocus="on"
+                    autocomplete="off"
+                    class="form-control shadow-sm"
+                    id="search-val"
+                  />
+                </div>
+                <div class="col-2">
+                  <input
+                    type="submit"
+                    value="🔎"
+                    class="form-control btn btn-primary shadow-sm"
+                  />
+                </div>
+                <div class="col-2">
+                  <button
+                    type="submit"
+                    value="current"
+                    class="btn btn-success w-100"
+                    id="current-location"
+                  >
+                    📌
+                  </button>
+                </div>
+              </div>
+            </form>
+            <h1 id="city-name">New York</h1>
+            <ul>
+              <li id="date-time"></li>
+              <li id="description"></li>
+            </ul>
+            <div class="row">
+              <div class="col-8">
+                <div class="clearfix">
+                  <img
+                    src=""
+                    alt="..."
+                    class="weather-icon float-left"
+                    id="icon"
+                  />
+                  <div class="float-left">
+                    <span class="temperature" id="current-temp">19</span
+                    ><span class="units">°C</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <ul>
+                  <li id="precipitation"></li>
+                  <li id="humidity">Humidity: <span class="red">77%</span></li>
+                  <li id="wind">Wind: <span class="red">8 km/h</span></li>
+                </ul>
               </div>
             </div>
+            <div class="weather-forecast" id="forecast"></div>
           </div>
-          <div class="col-6">
-            <ul>
-              <li id="precipitation"></li>
-              <li id="humidity">Humidity: <span class="red">77%</span></li>
-              <li id="wind">Wind: <span class="red">8 km/h</span></li>
-            </ul>
+          <div class="col-4 poster-size">
+            <img src="image/1.jpg" alt="..." id="poster" />
           </div>
         </div>
-        <div class="weather-forecast" id="forecast"></div>
       </div>
       <small>
         <a

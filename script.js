@@ -10,7 +10,7 @@ let days = [
 let dateTime = document.querySelector("#date-time");
 let currentTime = new Date();
 let searchForm = document.querySelector(".search-form");
-let searchedCity = "New York";
+let searchedCity;
 //units
 let units = "metric";
 let cel = document.querySelector("#cel");
@@ -25,9 +25,15 @@ let wind = document.querySelector("#wind");
 let currentLocation = document.querySelector("#current-location");
 let icon = document.querySelector("#icon");
 
-//---------------api
+//--------apikey
 let apiKey = "20d87b3c54629cecfb5e61654cd02764";
-let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=${units}&appid=${apiKey}`;
+
+function search(city) {
+  searchedCity = city;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
+
+  axios.get(url).then(updateInfo);
+}
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -39,6 +45,7 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+  console.log(forecast);
 
   let forecastElement = document.querySelector("#forecast");
 
@@ -54,7 +61,7 @@ function displayForecast(response) {
           src="http://openweathermap.org/img/wn/${
             forecastDay.weather[0].icon
           }@2x.png"
-          alt=""
+          alt=${forecastDay.weather[0].description}
           width="42"
         />
         <div class="weather-forecast-temperatures">
@@ -93,12 +100,12 @@ function updateInfo(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
   getForecast(response.data.coord);
 }
-axios.get(url).then(updateInfo);
 
-/////-------------------------date
-dateTime.innerHTML = `${
-  days[currentTime.getDay()]
-}, ${currentTime.getHours()}:${currentTime.getMinutes()}`;
+function setDate() {
+  dateTime.innerHTML = `${
+    days[currentTime.getDay()]
+  }, ${currentTime.getHours()}:${currentTime.getMinutes()}`;
+}
 
 //search
 searchForm.addEventListener("submit", function (event) {
@@ -108,27 +115,6 @@ searchForm.addEventListener("submit", function (event) {
   axios.get(url).then(updateInfo);
 });
 
-//-------------------------unit changer
-cel.addEventListener("click", function (event) {
-  event.preventDefault();
-  if (units !== "metric") {
-    units = "metric";
-    url = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=${units}&appid=${apiKey}`;
-    axios.get(url).then(function (response) {
-      degree.innerHTML = Math.round(response.data.main.temp);
-    });
-  }
-});
-farh.addEventListener("click", function (event) {
-  event.preventDefault();
-  if (units === "metric") {
-    units = "imperial";
-    url = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=${units}&appid=${apiKey}`;
-    axios.get(url).then(function (response) {
-      degree.innerHTML = Math.round(response.data.main.temp);
-    });
-  }
-});
 //////---------------current location----------------
 function updateInfoLocation(response) {
   let temp = Math.round(response.data.main.temp);
@@ -149,4 +135,19 @@ currentLocation.addEventListener("click", function (event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(currentPosition);
 });
-///////////---------------------------------------
+
+function setPic() {
+  let path = "image/1.jpg";
+  let randomNum = Math.floor(Math.random() * pics.length);
+  document.getElementById("poster").src = pics[randomNum];
+}
+search("New York");
+setDate();
+
+var pics = new Array(
+  "image/1.jpg",
+  "image/2.jpg",
+  "image/3.jpg",
+  "image/4.jpg"
+);
+setPic();
