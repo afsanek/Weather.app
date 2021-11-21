@@ -23,6 +23,10 @@ li {
   line-height: 1;
   list-style: none;
 }
+img {
+  display: block;
+  margin: 0 auto;
+}
 
 .weather-app {
   border: 1px solid #dadde1;
@@ -38,6 +42,24 @@ li {
   height: 64px;
   width: 64px;
   margin-right: 10px;
+}
+
+.weather-forecast {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.weather-forecast-date {
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+.weather-forecast-tempreture {
+  font-size: 13px;
+}
+
+.weather-forecast-tempreture-min {
+  opacity: 0.5;
 }
 
 .temperature {
